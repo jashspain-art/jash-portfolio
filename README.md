@@ -101,14 +101,19 @@ npm run dev
 
 ## 📄 Add Your Resume
 
-Place your resume PDF in the `public/` folder named `resume.pdf`:
+**Crucial Step:**
+1. Rename your resume PDF file to **`resume.pdf`**.
+2. Place it in the **`public/`** folder of this project.
+3. Push to GitHub.
+The "Download Resume" button on the site is already linked to `/resume.pdf`.
 
-```
-public/
-└── resume.pdf
-```
+---
 
-The "Download Resume" button will automatically serve it.
+## 🤖 AI Chatbot
+
+The site features a built-in AI assistant. To customize its knowledge:
+- Edit the `PortfolioData` in `src/config/portfolio.ts`.
+- The chatbot response logic is in `src/components/features/Chatbot.tsx`. It uses the data from your config to answer visitor questions.
 
 ---
 

@@ -6,6 +6,7 @@ import Experience from "@/components/sections/Experience";
 import Projects from "@/components/sections/Projects";
 import Skills from "@/components/sections/Skills";
 import Contact from "@/components/sections/Contact";
+import Chatbot from "@/components/features/Chatbot";
 
 export default function Home() {
   return (
@@ -24,6 +25,7 @@ export default function Home() {
         <div className="border-t border-[rgb(var(--border)/0.5)]" />
         <Contact />
       </main>
+      <Chatbot />
       <Footer />
     </>
   );
