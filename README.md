@@ -1,36 +1,135 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Jash Navin Thakkar — Personal Portfolio
 
-## Getting Started
+A premium, modern portfolio website built with **Next.js 16**, **Tailwind CSS v4**, and **Framer Motion**.  
+Designed to position Jash as a high-potential business & AI growth professional.
 
-First, run the development server:
+## 🌐 Live Site
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+> https://jash-portfolio.vercel.app *(will be live after first deployment)*
+
+---
+
+## 🚀 Tech Stack
+
+| Layer     | Tech                                |
+|-----------|-------------------------------------|
+| Framework | Next.js 16 (App Router)             |
+| Styling   | Tailwind CSS v4                     |
+| Animation | Framer Motion                       |
+| Icons     | Lucide React                        |
+| Theme     | next-themes (dark/light mode)       |
+| Fonts     | Inter (Google Fonts)                |
+| Deploy    | Vercel                              |
+
+---
+
+## 📁 Project Structure
+
+```
+jash-portfolio/
+├── src/
+│   ├── app/
+│   │   ├── layout.tsx        # Root layout, SEO metadata
+│   │   ├── page.tsx          # Main page (assembles all sections)
+│   │   └── globals.css       # Global styles + CSS theme tokens
+│   ├── components/
+│   │   ├── Navbar.tsx        # Sticky nav + dark/light toggle
+│   │   ├── Footer.tsx        # Footer with socials
+│   │   ├── Section.tsx       # Reusable animated section wrapper
+│   │   ├── theme-provider.tsx
+│   │   └── sections/
+│   │       ├── Hero.tsx
+│   │       ├── About.tsx
+│   │       ├── Experience.tsx
+│   │       ├── Projects.tsx   # Filter: All / AI / Business
+│   │       ├── Skills.tsx
+│   │       └── Contact.tsx
+│   └── config/
+│       └── portfolio.ts      # ✏️ ALL CONTENT LIVES HERE
+└── public/
+    └── resume.pdf            # Add your resume PDF here
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## ✏️ How to Edit Content
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+**All content (name, bio, projects, experience, skills, links) is in one file:**
 
-## Learn More
+```
+src/config/portfolio.ts
+```
 
-To learn more about Next.js, take a look at the following resources:
+Open that file and update any section. No coding knowledge needed — just change the text values.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Adding a New Project
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Find the `projects` array in `portfolio.ts` and add a new object:
 
-## Deploy on Vercel
+```ts
+{
+  title: "My New Project",
+  description: "What it does and why it matters.",
+  tech: ["Tool A", "Tool B"],
+  category: "AI",  // or "Business"
+  links: {
+    github: "https://github.com/your-repo",
+    demo: "https://your-demo.com"
+  }
+}
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🏃 Run Locally
+
+```bash
+# 1. Clone the repository
+git clone https://github.com/YOUR_USERNAME/jash-portfolio.git
+cd jash-portfolio
+
+# 2. Install dependencies
+npm install
+
+# 3. Start development server
+npm run dev
+
+# 4. Open browser at http://localhost:3000
+```
+
+---
+
+## 📄 Add Your Resume
+
+Place your resume PDF in the `public/` folder named `resume.pdf`:
+
+```
+public/
+└── resume.pdf
+```
+
+The "Download Resume" button will automatically serve it.
+
+---
+
+## 🌙 Dark / Light Mode
+
+The site defaults to **dark mode**. Users can toggle using the button in the top-right corner. Preferences are saved automatically.
+
+---
+
+## 🚢 Deploy to Vercel
+
+1. Push this repo to GitHub
+2. Go to [vercel.com](https://vercel.com) → **Add New Project**
+3. Import this repository
+4. Click **Deploy** — zero configuration needed
+5. Auto-redeploys on every `git push`
+
+---
+
+## 📬 Contact
+
+**Jash Navin Thakkar**  
+📧 jash.spain@gmail.com  
+💼 [LinkedIn](https://www.linkedin.com/in/jash-thakkar-325852330)
