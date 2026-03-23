@@ -54,7 +54,6 @@ const PARTICLES = [
 
 const STATS = [
   { value: 5, suffix: "+", label: "Years Experience" },
-  { value: 3, suffix: "", label: "Countries Worked" },
   { value: 100, suffix: "+", label: "Deals Closed" },
 ];
 
