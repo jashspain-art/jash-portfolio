@@ -4,20 +4,23 @@ import { motion } from "framer-motion";
 import { Cpu, TrendingUp, Wrench, Users } from "lucide-react";
 import Section, { SectionHeading } from "@/components/Section";
 import { portfolioConfig } from "@/config/portfolio";
-
-const categories = [
-  { key: "ai" as const, label: "AI & Technical", icon: Cpu },
-  { key: "business" as const, label: "Business & Growth", icon: TrendingUp },
-  { key: "tools" as const, label: "Tools", icon: Wrench },
-  { key: "leadership" as const, label: "Leadership & Soft Skills", icon: Users },
-];
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function Skills() {
-  const { skills, languages } = portfolioConfig;
+  const { t } = useLanguage();
+  const { skills: skillsLocale } = t;
+  const { skills, languages } = portfolioConfig.common;
+
+  const categories = [
+    { key: "ai" as const, label: skillsLocale.ai, icon: Cpu },
+    { key: "business" as const, label: skillsLocale.business, icon: TrendingUp },
+    { key: "tools" as const, label: skillsLocale.tools, icon: Wrench },
+    { key: "leadership" as const, label: skillsLocale.leadership, icon: Users },
+  ];
 
   return (
     <Section id="skills">
-      <SectionHeading title="Skills" subtitle="My Toolkit" />
+      <SectionHeading title={skillsLocale.title} subtitle={t.role} />
 
       <div className="grid md:grid-cols-2 gap-6 mb-12">
         {categories.map(({ key, label, icon: Icon }, ci) => (
@@ -36,7 +39,7 @@ export default function Skills() {
               <h3 className="text-sm font-semibold text-[rgb(var(--text))]">{label}</h3>
             </div>
             <div className="flex flex-wrap gap-2">
-              {skills[key].map((skill, i) => (
+               {(skills as any)[key].map((skill: string, i: number) => (
                 <motion.span
                   key={skill}
                   initial={{ opacity: 0, scale: 0.9 }}
@@ -56,10 +59,10 @@ export default function Skills() {
       {/* Languages */}
       <div>
         <h3 className="text-sm font-semibold text-[rgb(var(--text))] mb-5 flex items-center gap-2">
-          <span className="text-lg">🌍</span> Languages
+          <span className="text-lg">🌍</span> {portfolioConfig.locales.en.skills.title === skillsLocale.title ? "Languages" : (skillsLocale as any).languages || "Languages"}
         </h3>
         <div className="flex flex-wrap gap-4">
-          {languages.map((lang, i) => (
+          {languages.map((lang: any, i: number) => (
             <motion.div
               key={lang.name}
               initial={{ opacity: 0, y: 10 }}

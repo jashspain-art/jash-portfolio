@@ -3,23 +3,24 @@
 import { motion } from "framer-motion";
 import { MapPin, GraduationCap, Zap } from "lucide-react";
 import Section, { SectionHeading } from "@/components/Section";
-import { portfolioConfig } from "@/config/portfolio";
-
-const highlights = [
-  { icon: Zap, label: "5+ Years Experience", sub: "Sales & Business Development" },
-  { icon: GraduationCap, label: "MSc in Progress", sub: "Digital Marketing & Analytics" },
-  { icon: MapPin, label: "Based in", sub: "Barcelona, Spain" },
-];
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function About() {
-  const { about } = portfolioConfig;
+  const { t } = useLanguage();
+  const { about } = t;
+
+  const highlights = [
+    { icon: Zap, label: about.highlights.experience, sub: "" },
+    { icon: GraduationCap, label: about.highlights.education, sub: "" },
+    { icon: MapPin, label: about.highlights.location, sub: "" },
+  ];
   return (
     <Section id="about">
       <SectionHeading title="About Me" subtitle="My Story" />
       <div className="grid md:grid-cols-5 gap-12 items-start">
         {/* Text */}
         <div className="md:col-span-3 space-y-5">
-          {about.content.split("\n\n").map((para, i) => (
+          {about.content.split("\n\n").map((para: string, i: number) => (
             <motion.p
               key={i}
               initial={{ opacity: 0, y: 20 }}

@@ -3,14 +3,15 @@
 import { motion } from "framer-motion";
 import { Briefcase, GraduationCap, ChevronRight } from "lucide-react";
 import Section, { SectionHeading } from "@/components/Section";
-import { portfolioConfig } from "@/config/portfolio";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function Experience() {
-  const { experience, education } = portfolioConfig;
+  const { t } = useLanguage();
+  const { experience, education } = t;
 
   return (
     <Section id="experience">
-      <SectionHeading title="Experience & Education" subtitle="My Journey" />
+      <SectionHeading title={`${experience.title} & ${education.title}`} subtitle={t.role} />
 
       <div className="grid md:grid-cols-2 gap-16">
         {/* Experience */}
@@ -27,7 +28,7 @@ export default function Experience() {
             <div className="absolute left-[7px] top-2 bottom-2 w-px bg-[rgb(var(--border))]" />
 
             <div className="space-y-8">
-              {experience.map((item, i) => (
+              {experience.items.map((item: any, i: number) => (
                 <motion.div
                   key={i}
                   initial={{ opacity: 0, x: -20 }}
@@ -50,7 +51,7 @@ export default function Experience() {
                       {item.company}
                     </p>
                     <ul className="space-y-1.5">
-                      {item.description.map((point, j) => (
+                      {item.description.map((point: string, j: number) => (
                         <li key={j} className="flex items-start gap-2 text-sm text-[rgb(var(--text-muted))]">
                           <ChevronRight size={14} className="mt-0.5 text-[rgb(var(--accent))] flex-shrink-0" />
                           {point}
@@ -76,7 +77,7 @@ export default function Experience() {
           <div className="relative">
             <div className="absolute left-[7px] top-2 bottom-2 w-px bg-[rgb(var(--border))]" />
             <div className="space-y-6">
-              {education.map((item, i) => (
+              {education.items.map((item: any, i: number) => (
                 <motion.div
                   key={i}
                   initial={{ opacity: 0, x: 20 }}

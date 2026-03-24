@@ -5,9 +5,12 @@ import { motion } from "framer-motion";
 import { Mail, Phone, Linkedin, Send, CheckCircle } from "lucide-react";
 import Section, { SectionHeading } from "@/components/Section";
 import { portfolioConfig } from "@/config/portfolio";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function Contact() {
-  const { contact } = portfolioConfig;
+  const { t } = useLanguage();
+  const { contact: contactLocale } = t;
+  const { common: contact } = portfolioConfig;
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [sent, setSent] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -29,13 +32,13 @@ export default function Contact() {
 
   return (
     <Section id="contact">
-      <SectionHeading title="Get In Touch" subtitle="Contact" />
+      <SectionHeading title={contactLocale.title} subtitle={contactLocale.subtitle} />
 
       <div className="grid md:grid-cols-2 gap-12">
         {/* Info */}
         <div className="space-y-6">
           <p className="text-[rgb(var(--text-muted))] leading-relaxed">
-            Whether you want to discuss business opportunities, collaboration, or just say hello — I&apos;d love to hear from you.
+            {contactLocale.subtitle}
           </p>
 
           <div className="space-y-4">
@@ -75,16 +78,16 @@ export default function Contact() {
           {sent ? (
             <div className="h-full flex flex-col items-center justify-center gap-4 p-8 rounded-2xl bg-[rgb(var(--card))] border border-[rgb(var(--accent)/0.3)]">
               <CheckCircle size={40} className="text-[rgb(var(--accent))]" />
-              <h3 className="text-lg font-semibold text-[rgb(var(--text))]">Message Sent!</h3>
+              <h3 className="text-lg font-semibold text-[rgb(var(--text))]">{contactLocale.form.success}</h3>
               <p className="text-sm text-[rgb(var(--text-muted))] text-center">
-                Thanks for reaching out. I&apos;ll get back to you soon.
+                {contactLocale.subtitle}
               </p>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-4">
               {[
-                { id: "name", label: "Name", type: "text", placeholder: "Your name" },
-                { id: "email", label: "Email", type: "email", placeholder: "your@email.com" },
+                { id: "name", label: contactLocale.form.name, type: "text", placeholder: contactLocale.form.name },
+                { id: "email", label: contactLocale.form.email, type: "email", placeholder: "your@email.com" },
               ].map(({ id, label, type, placeholder }) => (
                 <div key={id}>
                   <label className="block text-xs font-medium text-[rgb(var(--text-muted))] mb-2">
@@ -102,12 +105,12 @@ export default function Contact() {
               ))}
               <div>
                 <label className="block text-xs font-medium text-[rgb(var(--text-muted))] mb-2">
-                  Message
+                  {contactLocale.form.message}
                 </label>
                 <textarea
                   required
                   rows={5}
-                  placeholder="What's on your mind?"
+                  placeholder={contactLocale.form.message}
                   value={form.message}
                   onChange={(e) => setForm({ ...form, message: e.target.value })}
                   className="w-full px-4 py-3 rounded-xl bg-[rgb(var(--card))] border border-[rgb(var(--card-border))] text-sm text-[rgb(var(--text))] placeholder:text-[rgb(var(--text-muted)/0.6)] focus:outline-none focus:border-[rgb(var(--accent))] focus:ring-1 focus:ring-[rgb(var(--accent)/0.3)] transition-all resize-none"
@@ -123,7 +126,7 @@ export default function Contact() {
                 ) : (
                   <Send size={14} />
                 )}
-                {loading ? "Sending..." : "Send Message"}
+                {loading ? "..." : contactLocale.form.send}
               </button>
             </form>
           )}

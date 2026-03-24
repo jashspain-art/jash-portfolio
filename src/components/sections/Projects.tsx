@@ -5,42 +5,41 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Github, ExternalLink, Tag } from "lucide-react";
 import Section, { SectionHeading } from "@/components/Section";
 import { portfolioConfig } from "@/config/portfolio";
-
-const FILTERS = ["All", "AI", "Business"] as const;
-type Filter = typeof FILTERS[number];
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function Projects() {
-  const [active, setActive] = useState<Filter>("All");
-  const { projects } = portfolioConfig;
+  const { t } = useLanguage();
+  const { projects: projectsLocale } = t;
+  const [active, setActive] = useState("All");
 
-  const filtered = projects.filter(
-    (p) => active === "All" || p.category === active
+  const filtered = projectsLocale.items.filter(
+    (p: any) => active === "All" || p.category === active || (active !== "All" && active === (projectsLocale.categories as any)[p.category.toLowerCase()])
   );
 
   return (
     <Section id="projects">
-      <SectionHeading title="Projects" subtitle="What I've Built" />
+      <SectionHeading title={projectsLocale.title} subtitle={t.role} />
 
       {/* Filter Pills */}
-      <div className="flex gap-3 mb-10">
-        {FILTERS.map((f) => (
+      <div className="flex gap-3 mb-10 overflow-x-auto pb-2 scrollbar-hide">
+        {Object.entries(projectsLocale.categories).map(([key, label]) => (
           <button
-            key={f}
-            onClick={() => setActive(f)}
-            className={`relative px-5 py-2 rounded-full text-sm font-medium transition-all cursor-pointer ${
-              active === f
+            key={key}
+            onClick={() => setActive(key === "all" ? "All" : (label as string))}
+            className={`relative px-5 py-2 rounded-full text-sm font-medium transition-all cursor-pointer whitespace-nowrap ${
+              (key === "all" && active === "All") || active === label
                 ? "text-white"
                 : "text-[rgb(var(--text-muted))] hover:text-[rgb(var(--text))]"
             }`}
           >
-            {active === f && (
+            {((key === "all" && active === "All") || active === label) && (
               <motion.div
                 layoutId="pill"
                 className="absolute inset-0 bg-[rgb(var(--accent))] rounded-full"
                 transition={{ type: "spring", bounce: 0.25, duration: 0.4 }}
               />
             )}
-            <span className="relative z-10">{f}</span>
+            <span className="relative z-10">{label as string}</span>
           </button>
         ))}
       </div>
@@ -48,7 +47,7 @@ export default function Projects() {
       {/* Project Cards */}
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         <AnimatePresence mode="popLayout">
-          {filtered.map((project, i) => (
+          {filtered.map((project: any, i: number) => (
             <motion.div
               key={project.title}
               layout
@@ -75,7 +74,7 @@ export default function Projects() {
 
               {/* Tech Stack */}
               <div className="flex flex-wrap gap-2 mb-5">
-                {project.tech.map((t) => (
+                {project.tech.map((t: string) => (
                   <span
                     key={t}
                     className="text-xs px-2.5 py-1 rounded-md bg-[rgb(var(--bg-secondary))] border border-[rgb(var(--border))] text-[rgb(var(--text-muted))] font-medium"

@@ -5,16 +5,18 @@ import { Moon, Sun, Menu, X } from "lucide-react";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { portfolioConfig } from "@/config/portfolio";
-
-const navLinks = [
-  { label: "About", href: "#about" },
-  { label: "Experience", href: "#experience" },
-  { label: "Projects", href: "#projects" },
-  { label: "Skills", href: "#skills" },
-  { label: "Contact", href: "#contact" },
-];
+import { useLanguage } from "@/context/LanguageContext";
+import LanguageSwitcher from "./features/LanguageSwitcher";
 
 export default function Navbar() {
+  const { t } = useLanguage();
+  const navLinks = [
+    { label: t.about.title.split(" ")[0], href: "#about" }, // "About"
+    { label: t.experience.title, href: "#experience" },
+    { label: t.projects.title.split(" ")[0], href: "#projects" }, // "Projects"
+    { label: t.skills.title.split(" ")[0], href: "#skills" }, // "Skills"
+    { label: t.contact.title.split(" ")[0], href: "#contact" }, // "Contact"
+  ];
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
@@ -48,7 +50,7 @@ export default function Navbar() {
           onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }}
           className="text-sm font-semibold tracking-tight text-[rgb(var(--text))] hover:text-[rgb(var(--accent))] transition-colors"
         >
-          {portfolioConfig.navigator.name}
+          {t.name}
         </a>
 
         {/* Desktop Links */}
@@ -66,6 +68,8 @@ export default function Navbar() {
 
         {/* Right Actions */}
         <div className="flex items-center gap-3">
+          <LanguageSwitcher />
+          
           {mounted && (
             <button
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}

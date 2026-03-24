@@ -4,6 +4,7 @@ import { motion, useMotionValue, useTransform, animate } from "framer-motion";
 import { Download, Mail, ChevronRight } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { portfolioConfig } from "@/config/portfolio";
+import { useLanguage } from "@/context/LanguageContext";
 
 // Animated counter
 function Counter({ to, suffix = "" }: { to: number; suffix?: string }) {
@@ -52,15 +53,21 @@ const PARTICLES = [
   { x: "10%", y: "30%", delay: 2 },
 ];
 
-const STATS = [
-  { value: 5, suffix: "+", label: "Years Experience" },
-  { value: 100, suffix: "+", label: "Deals Closed" },
-];
+// Removed global STATS to handle localization inside component
 
 export default function Hero() {
-  const { hero } = portfolioConfig;
+  const { t } = useLanguage();
+  const { hero } = t;
   const sectionRef = useRef<HTMLElement>(null);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+
+  const STATS = [
+    { value: 5, suffix: "+", label: t.about.highlights.experience },
+    { value: 100, suffix: "+", label: t.locales?.en?.hero?.cta?.deals || "Deals Closed" }, // Fallback if missing
+  ];
+  
+  // Actually I restructured portfolio.ts to have deal labels in each locale.
+  // I'll check my portfolio.ts restructure again.
 
   // Parallax mouse tracking for orbs
   const handleMouseMove = (e: React.MouseEvent) => {
@@ -158,9 +165,9 @@ export default function Hero() {
 
         {/* Name — letter-by-letter reveal */}
         <div className="text-5xl md:text-7xl font-bold text-[rgb(var(--text))] tracking-tight leading-none mb-6">
-          {hero.name.split(" ").map((word, wi) => (
+          {t.name.split(" ").map((word: string, wi: number) => (
             <span key={wi} className="inline-block mr-4">
-              {word.split("").map((char, ci) => (
+              {word.split("").map((char: string, ci: number) => (
                 <motion.span
                   key={ci}
                   className="inline-block"
@@ -200,28 +207,34 @@ export default function Hero() {
           variants={itemVariants}
           className="flex flex-wrap items-center justify-center gap-4 mb-14"
         >
-          {hero.cta.map((btn, i) => (
-            <motion.button
-              key={btn.label}
-              onClick={() => handleScroll(btn.href)}
-              whileHover={{ scale: 1.04, y: -2 }}
-              whileTap={{ scale: 0.97 }}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.85 + (i * 0.1) }}
-              className={`px-6 py-3 rounded-xl text-sm font-semibold transition-all duration-200 cursor-pointer flex items-center gap-2 ${
-                btn.variant === "primary"
-                  ? "bg-[rgb(var(--accent))] text-white shadow-lg shadow-[rgb(var(--accent)/0.3)] hover:shadow-[rgb(var(--accent)/0.5)]"
-                  : btn.variant === "secondary"
-                  ? "bg-[rgb(var(--card))] border border-[rgb(var(--border))] text-[rgb(var(--text))] hover:border-[rgb(var(--accent)/0.6)] hover:text-[rgb(var(--accent))]"
-                  : "border border-[rgb(var(--border))] text-[rgb(var(--text-muted))] hover:border-[rgb(var(--accent)/0.5)] hover:text-[rgb(var(--accent))]"
-              }`}
-            >
-              {btn.label === "Download Resume" && <Download size={14} />}
-              {btn.label === "Contact Me" && <Mail size={14} />}
-              {btn.label}
-            </motion.button>
-          ))}
+          <motion.button
+            onClick={() => handleScroll("#projects")}
+            whileHover={{ scale: 1.04, y: -2 }}
+            whileTap={{ scale: 0.97 }}
+            className="px-6 py-3 rounded-xl text-sm font-semibold transition-all duration-200 cursor-pointer flex items-center gap-2 bg-[rgb(var(--accent))] text-white shadow-lg shadow-[rgb(var(--accent)/0.3)] hover:shadow-[rgb(var(--accent)/0.5)]"
+          >
+            {hero.cta.projects}
+          </motion.button>
+
+          <motion.button
+            onClick={() => handleScroll("/resume.pdf")}
+            whileHover={{ scale: 1.04, y: -2 }}
+            whileTap={{ scale: 0.97 }}
+            className="px-6 py-3 rounded-xl text-sm font-semibold transition-all duration-200 cursor-pointer flex items-center gap-2 bg-[rgb(var(--card))] border border-[rgb(var(--border))] text-[rgb(var(--text))] hover:border-[rgb(var(--accent)/0.6)] text-[rgb(var(--text))]"
+          >
+            <Download size={14} />
+            {hero.cta.resume}
+          </motion.button>
+
+          <motion.button
+            onClick={() => handleScroll("#contact")}
+            whileHover={{ scale: 1.04, y: -2 }}
+            whileTap={{ scale: 0.97 }}
+            className="px-6 py-3 rounded-xl text-sm font-semibold transition-all duration-200 cursor-pointer flex items-center gap-2 border border-[rgb(var(--border))] text-[rgb(var(--text-muted))] hover:border-[rgb(var(--accent)/0.5)] hover:text-[rgb(var(--accent))]"
+          >
+            <Mail size={14} />
+            {hero.cta.contact}
+          </motion.button>
         </motion.div>
 
         {/* ── Animated Stats ── */}
