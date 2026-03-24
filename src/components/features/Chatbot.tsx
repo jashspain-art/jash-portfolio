@@ -51,14 +51,14 @@ export default function Chatbot() {
       return `Jash has worked on several interesting projects, including an AI Outreach Automation System, an AI Job Hunting Assistant, and a LinkedIn Lead Generation Workflow.`;
     }
     if (q.includes("skill") || q.includes("tool") || q.includes("stack")) {
-      const allSkills = [...portfolioConfig.skills.ai, ...portfolioConfig.skills.business].slice(0, 5).join(", ");
+      const allSkills = [...portfolioConfig.common.skills.ai, ...portfolioConfig.common.skills.business].slice(0, 5).join(", ");
       return `Jash is skilled in AI automation, Prompt Engineering, Business Development, Sales Strategy, and Lead Generation. Some tools he uses include ${allSkills}.`;
     }
     if (q.includes("education") || q.includes("study") || q.includes("school")) {
       return `Jash is currently pursuing an MSc in Digital Marketing & Analytics at Toulouse Business School in Barcelona. He also holds an MSc in International Management from the University of Limerick.`;
     }
     if (q.includes("contact") || q.includes("email") || q.includes("linkedin")) {
-      return `You can reach Jash at ${portfolioConfig.contact.email} or connect with him on LinkedIn: ${portfolioConfig.contact.linkedin}`;
+      return `You can reach Jash at ${portfolioConfig.common.email} or connect with him on LinkedIn: ${portfolioConfig.common.linkedin}`;
     }
     if (q.includes("football") || q.includes("captain") || q.includes("hobby")) {
       return `Jash was a football captain, highlighting his strong leadership and teamwork skills!`;
