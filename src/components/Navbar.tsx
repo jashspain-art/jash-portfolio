@@ -1,7 +1,6 @@
 "use client";
 
-import { useTheme } from "next-themes";
-import { Moon, Sun, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { portfolioConfig } from "@/config/portfolio";
@@ -17,13 +16,10 @@ export default function Navbar() {
     { label: t.skills.title.split(" ")[0], href: "#skills" }, // "Skills"
     { label: t.contact.title.split(" ")[0], href: "#contact" }, // "Contact"
   ];
-  const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
     const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -69,16 +65,6 @@ export default function Navbar() {
         {/* Right Actions */}
         <div className="flex items-center gap-3">
           <LanguageSwitcher />
-          
-          {mounted && (
-            <button
-              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="p-2 rounded-lg text-[rgb(var(--text-muted))] hover:text-[rgb(var(--text))] hover:bg-[rgb(var(--border)/0.5)] transition-all"
-              aria-label="Toggle theme"
-            >
-              {theme === "dark" ? <Sun size={16} /> : <Moon size={16} />}
-            </button>
-          )}
 
           {/* Mobile Menu Toggle */}
           <button
