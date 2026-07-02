@@ -9,6 +9,8 @@ export default function About() {
   const { t } = useLanguage();
   const { about } = t;
 
+  const isHindi = t.skills.title !== "Skills & Expertise";
+
   const highlights = [
     { icon: Zap, label: about.highlights.experience, sub: "" },
     { icon: GraduationCap, label: about.highlights.education, sub: "" },
@@ -16,7 +18,7 @@ export default function About() {
   ];
   return (
     <Section id="about">
-      <SectionHeading title="About Me" subtitle="My Story" />
+      <SectionHeading title={about.title} subtitle={isHindi ? "मेरी कहानी" : "My Story"} />
       <div className="grid md:grid-cols-5 gap-12 items-start">
         {/* Text */}
         <div className="md:col-span-3 space-y-5">

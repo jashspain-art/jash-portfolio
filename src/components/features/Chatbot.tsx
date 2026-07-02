@@ -45,26 +45,33 @@ export default function Chatbot() {
     const q = query.toLowerCase();
     
     if (q.includes("experience") || q.includes("work") || q.includes("job")) {
-      return `Jash has over 5 years of experience in business development and sales across the real estate and retail sectors. He worked as a Retail Manager at Vodafone and a Sales Executive at Daksha Real Estate.`;
+      return `Jash is currently a Business Development & Strategic Partnership Specialist at Billoxy. He also works as a Freelance AI Website Developer, and has prior experience as a Business Operations & Sales Executive at JT Ventures and a Business Development Executive at Daksha Real Estate.`;
     }
-    if (q.includes("project") || q.includes("build")) {
-      return `Jash has worked on several interesting projects, including an AI Outreach Automation System, an AI Job Hunting Assistant, and a LinkedIn Lead Generation Workflow.`;
+    if (q.includes("project") || q.includes("build") || q.includes("work")) {
+      return `Jash's featured work includes: 
+1. PartnerOS: An AI-powered CRM concept focused on lead management, partnership management, sales pipeline tracking, and business growth.
+2. Kayzad Advertising: A modern advertising agency business website.
+3. Daksha Real Estate: A professional real estate website.
+4. Personal Portfolio: A premium portfolio built using Next.js, Tailwind CSS v4, and Framer Motion.`;
     }
     if (q.includes("skill") || q.includes("tool") || q.includes("stack")) {
-      const allSkills = [...portfolioConfig.common.skills.ai, ...portfolioConfig.common.skills.business].slice(0, 5).join(", ");
-      return `Jash is skilled in AI automation, Prompt Engineering, Business Development, Sales Strategy, and Lead Generation. Some tools he uses include ${allSkills}.`;
+      const allSkills = [...portfolioConfig.common.skills.business, ...portfolioConfig.common.skills.generative_ai].slice(0, 7).join(", ");
+      return `Jash specializes in Business Development, Strategic Partnerships, B2B Sales, Lead Generation, and AI-assisted website development. Some tools and skills he uses include ${allSkills}, CTO.new, Antigravity, OpenCode, and GitHub/Vercel for deployment.`;
     }
     if (q.includes("education") || q.includes("study") || q.includes("school")) {
-      return `Jash is currently pursuing an MSc in Digital Marketing & Analytics at Toulouse Business School in Barcelona. He also holds an MSc in International Management from the University of Limerick.`;
+      return `Jash holds two Master's degrees:
+- MSc Digital Marketing & Analytics from Toulouse Business School, Barcelona
+- MSc International Management & Global Business from University of Limerick, Ireland
+He also holds a BBA from D.Y. Patil School of Management.`;
     }
-    if (q.includes("contact") || q.includes("email") || q.includes("linkedin")) {
-      return `You can reach Jash at ${portfolioConfig.common.email} or connect with him on LinkedIn: ${portfolioConfig.common.linkedin}`;
+    if (q.includes("contact") || q.includes("email") || q.includes("linkedin") || q.includes("phone")) {
+      return `You can reach Jash at ${portfolioConfig.common.email} (Phone: ${portfolioConfig.common.phone}) or connect on LinkedIn: ${portfolioConfig.common.linkedin}`;
     }
-    if (q.includes("football") || q.includes("captain") || q.includes("hobby")) {
-      return `Jash was a football captain, highlighting his strong leadership and teamwork skills!`;
+    if (q.includes("football") || q.includes("captain") || q.includes("hobby") || q.includes("lead")) {
+      return `Jash served as a Football Team Captain, highlighting his strong leadership, communication, and teamwork skills!`;
     }
     
-    return "That's a great question! Jash is a growth-focused professional bridging the gap between business and AI. Feel free to ask about his specific projects, work history, or education!";
+    return "That's a great question! Jash is an AI-enabled Business Development and Growth professional bridging commercial strategy with hands-on AI execution. Feel free to ask about his specific projects, work history, or education!";
   };
 
   return (

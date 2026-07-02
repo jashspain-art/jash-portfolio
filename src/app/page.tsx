@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Hero from "@/components/sections/Hero";
+import Stats from "@/components/sections/Stats";
 import About from "@/components/sections/About";
 import Experience from "@/components/sections/Experience";
 import Projects from "@/components/sections/Projects";
@@ -14,7 +15,7 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
-        <div className="border-t border-[rgb(var(--border)/0.5)]" />
+        <Stats />
         <About />
         <div className="border-t border-[rgb(var(--border)/0.5)]" />
         <Experience />

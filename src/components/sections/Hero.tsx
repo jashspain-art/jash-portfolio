@@ -1,25 +1,9 @@
 "use client";
 
-import { motion, useMotionValue, useTransform, animate } from "framer-motion";
+import { motion } from "framer-motion";
 import { Download, Mail, ChevronRight } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
-import { portfolioConfig } from "@/config/portfolio";
+import { useRef, useState } from "react";
 import { useLanguage } from "@/context/LanguageContext";
-
-// Animated counter
-function Counter({ to, suffix = "" }: { to: number; suffix?: string }) {
-  const count = useMotionValue(0);
-  const rounded = useTransform(count, (v) => Math.round(v));
-  const [display, setDisplay] = useState(0);
-
-  useEffect(() => {
-    const controls = animate(count, to, { duration: 2, delay: 1, ease: "easeOut" });
-    const unsubscribe = rounded.on("change", setDisplay);
-    return () => { controls.stop(); unsubscribe(); };
-  }, [count, rounded, to]);
-
-  return <span>{display}{suffix}</span>;
-}
 
 // Floating particle
 function Particle({ x, y, delay }: { x: string; y: string; delay: number }) {
@@ -53,21 +37,11 @@ const PARTICLES = [
   { x: "10%", y: "30%", delay: 2 },
 ];
 
-// Removed global STATS to handle localization inside component
-
 export default function Hero() {
   const { t } = useLanguage();
   const { hero } = t;
   const sectionRef = useRef<HTMLElement>(null);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-
-  const STATS = [
-    { value: 5, suffix: "+", label: t.about.highlights.experience },
-    { value: 100, suffix: "+", label: t.locales?.en?.hero?.cta?.deals || "Deals Closed" }, // Fallback if missing
-  ];
-  
-  // Actually I restructured portfolio.ts to have deal labels in each locale.
-  // I'll check my portfolio.ts restructure again.
 
   // Parallax mouse tracking for orbs
   const handleMouseMove = (e: React.MouseEvent) => {
@@ -79,12 +53,8 @@ export default function Hero() {
   };
 
   const handleScroll = (href: string) => {
-    if (href.startsWith("#")) {
-      const el = document.querySelector(href);
-      el?.scrollIntoView({ behavior: "smooth" });
-    } else {
-      window.open(href, "_blank");
-    }
+    const el = document.querySelector(href);
+    el?.scrollIntoView({ behavior: "smooth" });
   };
 
   const containerVariants = {
@@ -93,7 +63,7 @@ export default function Hero() {
   };
 
   const itemVariants: any = {
-    hidden: { opacity: 0, y: 28 },
+    hidden: { opacity: 0, y: 25 },
     show: { 
       opacity: 1, 
       y: 0, 
@@ -108,25 +78,25 @@ export default function Hero() {
     <section
       ref={sectionRef}
       onMouseMove={handleMouseMove}
-      className="relative min-h-screen flex flex-col items-center justify-center px-6 overflow-hidden"
+      className="relative min-h-[92vh] flex flex-col items-center justify-center px-6 overflow-hidden py-20 bg-gradient-to-b from-[#050505] via-[#0b0c10]/20 to-[#050505]"
     >
       {/* ── Parallax Gradient Orbs ── */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <motion.div
-          className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-[rgb(var(--accent)/0.07)] rounded-full blur-3xl"
-          style={{ x: (mousePos.x * -40) as any, y: (mousePos.y * -40) as any }}
-          animate={{ scale: [1, 1.1, 1] }}
-          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-[rgb(var(--accent)/0.08)] rounded-full blur-3xl"
+          style={{ x: (mousePos.x * -35) as any, y: (mousePos.y * -35) as any }}
+          animate={{ scale: [1, 1.08, 1] }}
+          transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
         />
         <motion.div
           className="absolute bottom-1/4 right-1/3 w-[380px] h-[380px] bg-[rgb(var(--accent)/0.05)] rounded-full blur-3xl"
-          style={{ x: (mousePos.x * 30) as any, y: (mousePos.y * 30) as any }}
-          animate={{ scale: [1, 1.15, 1] }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+          style={{ x: (mousePos.x * 25) as any, y: (mousePos.y * 25) as any }}
+          animate={{ scale: [1, 1.12, 1] }}
+          transition={{ duration: 9, repeat: Infinity, ease: "easeInOut", delay: 1 }}
         />
         {/* Grid texture */}
         <div
-          className="absolute inset-0 opacity-[0.03]"
+          className="absolute inset-0 opacity-[0.02]"
           style={{
             backgroundImage:
               "linear-gradient(rgb(var(--accent)) 1px, transparent 1px), linear-gradient(90deg, rgb(var(--accent)) 1px, transparent 1px)",
@@ -147,35 +117,34 @@ export default function Hero() {
         variants={containerVariants}
         initial="hidden"
         animate="show"
-        className="relative z-10 max-w-4xl mx-auto text-center"
+        className="relative z-10 max-w-4xl mx-auto text-center flex flex-col items-center"
       >
         {/* Eyebrow badge */}
         <motion.div variants={itemVariants} className="flex justify-center mb-8">
           <motion.div
             whileHover={{ scale: 1.05 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[rgb(var(--accent)/0.4)] bg-[rgb(var(--accent)/0.08)] cursor-default"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[rgb(var(--accent)/0.3)] bg-[rgb(var(--accent)/0.06)] cursor-default transition-colors duration-300"
           >
             <span className="w-2 h-2 bg-[rgb(var(--accent))] rounded-full animate-pulse" />
-            <span className="text-xs font-medium text-[rgb(var(--accent))] tracking-wide">
-              Open to Opportunities
+            <span className="text-xs font-semibold text-[rgb(var(--accent))] tracking-wide uppercase">
+              Business Development • Strategic Partnerships
             </span>
-            <ChevronRight size={12} className="text-[rgb(var(--accent))]" />
           </motion.div>
         </motion.div>
 
         {/* Name — letter-by-letter reveal */}
-        <div className="text-5xl md:text-7xl font-bold text-[rgb(var(--text))] tracking-tight leading-none mb-6">
+        <h1 className="text-5xl md:text-8xl font-black text-white tracking-tight leading-none mb-6">
           {t.name.split(" ").map((word: string, wi: number) => (
             <span key={wi} className="inline-block mr-4">
               {word.split("").map((char: string, ci: number) => (
                 <motion.span
                   key={ci}
-                  className="inline-block"
-                  initial={{ opacity: 0, y: 20, rotateX: -90 }}
+                  className="inline-block bg-clip-text text-transparent bg-gradient-to-b from-white to-gray-400"
+                  initial={{ opacity: 0, y: 15, rotateX: -60 }}
                   animate={{ opacity: 1, y: 0, rotateX: 0 }}
                   transition={{
-                    delay: 0.3 + wi * 0.12 + ci * 0.04,
-                    duration: 0.5,
+                    delay: 0.2 + wi * 0.1 + ci * 0.03,
+                    duration: 0.45,
                     ease: "easeOut",
                   }}
                 >
@@ -184,12 +153,12 @@ export default function Hero() {
               ))}
             </span>
           ))}
-        </div>
+        </h1>
 
         {/* Headline */}
         <motion.p
           variants={itemVariants}
-          className="text-xl md:text-2xl font-semibold text-[rgb(var(--accent))] mb-5 leading-tight"
+          className="text-lg md:text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[rgb(var(--accent))] to-[#60a5fa] mb-6 leading-tight max-w-3xl"
         >
           {hero.headline}
         </motion.p>
@@ -197,7 +166,7 @@ export default function Hero() {
         {/* Subtext */}
         <motion.p
           variants={itemVariants}
-          className="text-base md:text-lg text-[rgb(var(--text-muted))] max-w-2xl mx-auto mb-10 leading-relaxed"
+          className="text-base md:text-lg text-[rgb(var(--text-muted))] max-w-2xl mx-auto mb-10 leading-relaxed font-normal"
         >
           {hero.subtext}
         </motion.p>
@@ -205,60 +174,38 @@ export default function Hero() {
         {/* CTA Buttons */}
         <motion.div
           variants={itemVariants}
-          className="flex flex-wrap items-center justify-center gap-4 mb-14"
+          className="flex flex-wrap items-center justify-center gap-4"
         >
           <motion.button
             onClick={() => handleScroll("#projects")}
             whileHover={{ scale: 1.04, y: -2 }}
-            whileTap={{ scale: 0.97 }}
-            className="px-6 py-3 rounded-xl text-sm font-semibold transition-all duration-200 cursor-pointer flex items-center gap-2 bg-[rgb(var(--accent))] text-white shadow-lg shadow-[rgb(var(--accent)/0.3)] hover:shadow-[rgb(var(--accent)/0.5)]"
+            whileTap={{ scale: 0.98 }}
+            className="px-6 py-3 rounded-xl text-sm font-semibold transition-all duration-200 cursor-pointer flex items-center gap-2 bg-[rgb(var(--accent))] text-white shadow-lg shadow-[rgb(var(--accent)/0.25)] hover:bg-[rgb(var(--accent)/0.9)]"
           >
             {hero.cta.projects}
+            <ChevronRight size={14} />
           </motion.button>
 
-          <motion.button
-            onClick={() => handleScroll("/resume.pdf")}
+          <motion.a
+            href="/Jash_Thakkar_Resume.png"
+            download="Jash_Thakkar_Resume.png"
             whileHover={{ scale: 1.04, y: -2 }}
-            whileTap={{ scale: 0.97 }}
-            className="px-6 py-3 rounded-xl text-sm font-semibold transition-all duration-200 cursor-pointer flex items-center gap-2 bg-[rgb(var(--card))] border border-[rgb(var(--border))] text-[rgb(var(--text))] hover:border-[rgb(var(--accent)/0.6)] text-[rgb(var(--text))]"
+            whileTap={{ scale: 0.98 }}
+            className="px-6 py-3 rounded-xl text-sm font-semibold transition-all duration-200 cursor-pointer flex items-center gap-2 bg-[rgb(var(--card))] border border-[rgb(var(--card-border))] text-[rgb(var(--text))] hover:border-[rgb(var(--accent)/0.5)] hover:bg-[rgb(var(--card-border))]"
           >
             <Download size={14} />
             {hero.cta.resume}
-          </motion.button>
+          </motion.a>
 
           <motion.button
             onClick={() => handleScroll("#contact")}
             whileHover={{ scale: 1.04, y: -2 }}
-            whileTap={{ scale: 0.97 }}
-            className="px-6 py-3 rounded-xl text-sm font-semibold transition-all duration-200 cursor-pointer flex items-center gap-2 border border-[rgb(var(--border))] text-[rgb(var(--text-muted))] hover:border-[rgb(var(--accent)/0.5)] hover:text-[rgb(var(--accent))]"
+            whileTap={{ scale: 0.98 }}
+            className="px-6 py-3 rounded-xl text-sm font-semibold transition-all duration-200 cursor-pointer flex items-center gap-2 border border-[rgb(var(--border))] text-[rgb(var(--text-muted))] hover:border-[rgb(var(--accent)/0.5)] hover:text-white"
           >
             <Mail size={14} />
             {hero.cta.contact}
           </motion.button>
-        </motion.div>
-
-        {/* ── Animated Stats ── */}
-        <motion.div
-          variants={itemVariants}
-          className="flex flex-wrap items-center justify-center gap-8 md:gap-16"
-        >
-          {STATS.map(({ value, suffix, label }, i) => (
-            <motion.div
-              key={label}
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 1.1 + (i * 0.15), duration: 0.5, ease: "backOut" }}
-              whileHover={{ scale: 1.08 }}
-              className="text-center cursor-default"
-            >
-              <div className="text-3xl md:text-4xl font-bold text-[rgb(var(--text))] tabular-nums">
-                <Counter to={value} suffix={suffix} />
-              </div>
-              <div className="text-xs text-[rgb(var(--text-muted))] mt-1 tracking-wide">
-                {label}
-              </div>
-            </motion.div>
-          ))}
         </motion.div>
       </motion.div>
     </section>
