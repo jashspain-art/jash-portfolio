@@ -143,28 +143,28 @@ export const portfolioConfig = {
             description: "AI-powered CRM concept focused on lead management, partnership management, sales pipeline tracking and business growth.",
             category: "Product Concept",
             tech: ["ChatGPT", "Claude", "CTO.new", "Antigravity", "OpenCode", "GitHub", "Vercel"],
-            links: { demo: "https://partneros-crm.vercel.app" }
+            links: { demo: "https://partneros-next.vercel.app" }
           },
           {
             title: "Kayzad Advertising",
             description: "Modern business website designed and developed using AI-assisted development tools with responsive design and business-focused user experience.",
             category: "Website Development",
             tech: ["ChatGPT", "CTO.new", "Antigravity", "OpenCode", "GitHub", "Vercel"],
-            links: { demo: "https://kayzadadvertising.com" }
+            links: { demo: "https://kayzad-advertising.vercel.app" }
           },
           {
             title: "Daksha Real Estate",
             description: "Professional real estate website designed with a clean interface, responsive layout and business-focused presentation.",
             category: "Website Development",
             tech: ["ChatGPT", "CTO.new", "Antigravity", "OpenCode", "GitHub", "Vercel"],
-            links: { demo: "https://daksharealestate.com" }
+            links: { demo: "https://daksha-real-estate.vercel.app" }
           },
           {
             title: "Personal Portfolio",
             description: "Professional portfolio showcasing Business Development, Strategic Partnerships, AI-assisted website development and featured projects.",
             category: "Website Development",
             tech: ["ChatGPT", "Claude", "CTO.new", "Antigravity", "OpenCode", "GitHub", "Vercel"],
-            links: { demo: "https://jash-portfolio.vercel.app" }
+            links: { demo: "https://jash-portfolio-sable.vercel.app" }
           }
         ]
       },
@@ -274,28 +274,28 @@ export const portfolioConfig = {
             description: "लीड प्रबंधन, साझेदारी प्रबंधन, बिक्री पाइपलाइन ट्रैकिंग और व्यावसायिक विकास पर केंद्रित AI-संचालित CRM अवधारणा।",
             category: "उत्पाद अवधारणा",
             tech: ["ChatGPT", "Claude", "CTO.new", "Antigravity", "OpenCode", "GitHub", "Vercel"],
-            links: { demo: "https://partneros-crm.vercel.app" }
+            links: { demo: "https://partneros-next.vercel.app" }
           },
           {
             title: "Kayzad Advertising",
             description: "उत्तरदायी डिज़ाइन और व्यवसाय-केंद्रित उपयोगकर्ता अनुभव के साथ AI-सहायता प्राप्त विकास उपकरणों का उपयोग करके डिज़ाइन और विकसित की गई आधुनिक व्यावसायिक वेबसाइट।",
             category: "वेबसाइट विकास",
             tech: ["ChatGPT", "CTO.new", "Antigravity", "OpenCode", "GitHub", "Vercel"],
-            links: { demo: "https://kayzadadvertising.com" }
+            links: { demo: "https://kayzad-advertising.vercel.app" }
           },
           {
             title: "Daksha Real Estate",
             description: "साफ इंटरफ़ेस, उत्तरदायी लेआउट और व्यवसाय-केंद्रित प्रस्तुति के साथ डिज़ाइन की गई पेशेवर रियल एस्टेट वेबसाइट।",
             category: "वेबसाइट विकास",
             tech: ["ChatGPT", "CTO.new", "Antigravity", "OpenCode", "GitHub", "Vercel"],
-            links: { demo: "https://daksharealestate.com" }
+            links: { demo: "https://daksha-real-estate.vercel.app" }
           },
           {
             title: "Personal Portfolio",
             description: "बिज़नेस डेवलपमेंट, रणनीतिक साझेदारी, AI-सहायता प्राप्त वेबसाइट विकास और विशेष रुप से प्रदर्शित परियोजनाओं को प्रदर्शित करने वाला पेशेवर पोर्टफोलियो।",
             category: "वेबसाइट विकास",
             tech: ["ChatGPT", "Claude", "CTO.new", "Antigravity", "OpenCode", "GitHub", "Vercel"],
-            links: { demo: "https://jash-portfolio.vercel.app" }
+            links: { demo: "https://jash-portfolio-sable.vercel.app" }
           }
         ]
       },
@@ -405,28 +405,28 @@ export const portfolioConfig = {
             description: "Concepto de CRM impulsado por IA enfocado en la gestión de leads, gestión de asociaciones, seguimiento de pipelines de ventas y crecimiento comercial.",
             category: "Concepto de Producto",
             tech: ["ChatGPT", "Claude", "CTO.new", "Antigravity", "OpenCode", "GitHub", "Vercel"],
-            links: { demo: "https://partneros-crm.vercel.app" }
+            links: { demo: "https://partneros-next.vercel.app" }
           },
           {
             title: "Kayzad Advertising",
             description: "Sitio web comercial moderno diseñado y desarrollado utilizando herramientas de desarrollo asistidas por IA con diseño receptivo y experiencia de usuario enfocada en el negocio.",
             category: "Desarrollo Web",
             tech: ["ChatGPT", "CTO.new", "Antigravity", "OpenCode", "GitHub", "Vercel"],
-            links: { demo: "https://kayzadadvertising.com" }
+            links: { demo: "https://kayzad-advertising.vercel.app" }
           },
           {
             title: "Daksha Real Estate",
             description: "Sitio web inmobiliario profesional diseñado con una interfaz limpia, diseño receptivo y presentación enfocada en el negocio.",
             category: "Desarrollo Web",
             tech: ["ChatGPT", "CTO.new", "Antigravity", "OpenCode", "GitHub", "Vercel"],
-            links: { demo: "https://daksharealestate.com" }
+            links: { demo: "https://daksha-real-estate.vercel.app" }
           },
           {
             title: "Personal Portfolio",
             description: "Portafolio profesional que muestra Desarrollo de Negocios, Asociaciones Estratégicas, desarrollo de sitios web asistido por IA y proyectos destacados.",
             category: "Desarrollo Web",
             tech: ["ChatGPT", "Claude", "CTO.new", "Antigravity", "OpenCode", "GitHub", "Vercel"],
-            links: { demo: "https://jash-portfolio.vercel.app" }
+            links: { demo: "https://jash-portfolio-sable.vercel.app" }
           }
         ]
       },
@@ -536,28 +536,28 @@ export const portfolioConfig = {
             description: "Concept de CRM propulsé par l'IA axé sur la gestion des leads, des partenariats, le suivi du pipeline de ventes et la croissance commerciale.",
             category: "Concept Produit",
             tech: ["ChatGPT", "Claude", "CTO.new", "Antigravity", "OpenCode", "GitHub", "Vercel"],
-            links: { demo: "https://partneros-crm.vercel.app" }
+            links: { demo: "https://partneros-next.vercel.app" }
           },
           {
             title: "Kayzad Advertising",
             description: "Site web professionnel moderne conçu et développé avec des outils d'IA, offrant un design adaptatif et une expérience utilisateur orientée business.",
             category: "Développement Web",
             tech: ["ChatGPT", "CTO.new", "Antigravity", "OpenCode", "GitHub", "Vercel"],
-            links: { demo: "https://kayzadadvertising.com" }
+            links: { demo: "https://kayzad-advertising.vercel.app" }
           },
           {
             title: "Daksha Real Estate",
             description: "Site web immobilier professionnel conçu avec une interface épurée, un affichage adaptatif et une présentation axée sur les affaires.",
             category: "Développement Web",
             tech: ["ChatGPT", "CTO.new", "Antigravity", "OpenCode", "GitHub", "Vercel"],
-            links: { demo: "https://daksharealestate.com" }
+            links: { demo: "https://daksha-real-estate.vercel.app" }
           },
           {
             title: "Personal Portfolio",
             description: "Portfolio professionnel présentant le développement commercial, les partenariats stratégiques, la conception de sites web assistée par l'IA et divers projets.",
             category: "Développement Web",
             tech: ["ChatGPT", "Claude", "CTO.new", "Antigravity", "OpenCode", "GitHub", "Vercel"],
-            links: { demo: "https://jash-portfolio.vercel.app" }
+            links: { demo: "https://jash-portfolio-sable.vercel.app" }
           }
         ]
       },
@@ -667,28 +667,28 @@ export const portfolioConfig = {
             description: "Concept di CRM potenziato dall'IA focalizzato sulla gestione dei lead, partnership, tracciamento della pipeline di vendita e crescita del business.",
             category: "Concept di Prodotto",
             tech: ["ChatGPT", "Claude", "CTO.new", "Antigravity", "OpenCode", "GitHub", "Vercel"],
-            links: { demo: "https://partneros-crm.vercel.app" }
+            links: { demo: "https://partneros-next.vercel.app" }
           },
           {
             title: "Kayzad Advertising",
             description: "Sito web aziendale moderno progettato e sviluppato con strumenti di IA, con layout reattivo e ottimizzazione per conversioni commerciali.",
             category: "Sviluppo Web",
             tech: ["ChatGPT", "CTO.new", "Antigravity", "OpenCode", "GitHub", "Vercel"],
-            links: { demo: "https://kayzadadvertising.com" }
+            links: { demo: "https://kayzad-advertising.vercel.app" }
           },
           {
             title: "Daksha Real Estate",
             description: "Sito web immobiliare professionale progettato con un'interfaccia pulita, layout reattivo e focus commerciale.",
             category: "Sviluppo Web",
             tech: ["ChatGPT", "CTO.new", "Antigravity", "OpenCode", "GitHub", "Vercel"],
-            links: { demo: "https://daksharealestate.com" }
+            links: { demo: "https://daksha-real-estate.vercel.app" }
           },
           {
             title: "Personal Portfolio",
             description: "Portfolio professionale che presenta competenze in sviluppo business, partnership strategiche, sviluppo web con IA e progetti realizzati.",
             category: "Sviluppo Web",
             tech: ["ChatGPT", "Claude", "CTO.new", "Antigravity", "OpenCode", "GitHub", "Vercel"],
-            links: { demo: "https://jash-portfolio.vercel.app" }
+            links: { demo: "https://jash-portfolio-sable.vercel.app" }
           }
         ]
       },
@@ -798,28 +798,28 @@ export const portfolioConfig = {
             description: "KI-gestütztes CRM-Konzept mit Fokus auf Lead-Management, Partnerschaftsverwaltung, Vertriebs-Pipeline-Tracking und Geschäftswachstum.",
             category: "Produktkonzept",
             tech: ["ChatGPT", "Claude", "CTO.new", "Antigravity", "OpenCode", "GitHub", "Vercel"],
-            links: { demo: "https://partneros-crm.vercel.app" }
+            links: { demo: "https://partneros-next.vercel.app" }
           },
           {
             title: "Kayzad Advertising",
             description: "Moderne Unternehmens-Website, entworfen und entwickelt mit KI-Unterstützung, optimiert für ein herausragendes responsives Nutzererlebnis.",
             category: "Website-Entwicklung",
             tech: ["ChatGPT", "CTO.new", "Antigravity", "OpenCode", "GitHub", "Vercel"],
-            links: { demo: "https://kayzadadvertising.com" }
+            links: { demo: "https://kayzad-advertising.vercel.app" }
           },
           {
             title: "Daksha Real Estate",
             description: "Professionelle Immobilien-Website mit einer übersichtlichen Benutzeroberfläche, responsivem Layout und geschäftsorientierter Präsentation.",
             category: "Website-Entwicklung",
             tech: ["ChatGPT", "CTO.new", "Antigravity", "OpenCode", "GitHub", "Vercel"],
-            links: { demo: "https://daksharealestate.com" }
+            links: { demo: "https://daksha-real-estate.vercel.app" }
           },
           {
             title: "Personal Portfolio",
             description: "Professionelles Portfolio zur Präsentation von Geschäftsentwicklung, strategischen Partnerschaften, KI-unterstützter Website-Entwicklung und Projekten.",
             category: "Website-Entwicklung",
             tech: ["ChatGPT", "Claude", "CTO.new", "Antigravity", "OpenCode", "GitHub", "Vercel"],
-            links: { demo: "https://jash-portfolio.vercel.app" }
+            links: { demo: "https://jash-portfolio-sable.vercel.app" }
           }
         ]
       },
